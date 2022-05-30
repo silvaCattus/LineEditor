@@ -6,7 +6,10 @@ public class StraightLine : MonoBehaviour
 {
     //rect transform панели с нарисованной линией
     [SerializeField] protected RectTransform _drawPanelRT;
-    
+    //для преобразования экранных координат
+    [SerializeField] private ScreenCoordinateTransform _screenCoordinateTransform;
+
+
     protected LineRenderer _lineRenderer;
     //вершины прямой линии - константа
     public const int VertexNumber = 2;
@@ -44,7 +47,7 @@ public class StraightLine : MonoBehaviour
     public void SetOffsetPosition(Vector2 offset)
     {
         _offsetPosition = _centerOfPanel + offset;
-        _offsetPosition = LineCreator.GetWorldCoordinate(_offsetPosition);
+        _offsetPosition = _screenCoordinateTransform.GetWorldCoordinate(_offsetPosition);
         SetPoint(_offsetPosition);
     }
 

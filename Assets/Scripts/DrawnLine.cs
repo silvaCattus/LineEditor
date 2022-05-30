@@ -6,8 +6,6 @@ public class DrawnLine : StraightLine, IPrintable, ITexturable
     //ColorsPanelManager для подписки на событие выбора нового цвета для линии
     [SerializeField] private ColorsPanelManager _colorsManager;
 
-    //текстура линии
-    public Sprite SpriteTexture { get; private set; }
     //альфа цвета линии
     private int _alpha;
 
@@ -26,7 +24,7 @@ public class DrawnLine : StraightLine, IPrintable, ITexturable
     //назначаем текстуру
     public void TexturateMyself(Sprite sprite)
     {
-        SpriteTexture = sprite;
+        //
     }
 
     //устанавливаем значениее альфы цвета линии

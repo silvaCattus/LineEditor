@@ -10,6 +10,8 @@ public class ColorsPanelManager : MonoBehaviour
     [SerializeField] private Image _colorsPanelImage;
     //картинка с  выбранным цветом
     [SerializeField] private Image _chosenColorImage;
+    //для преобразования экранных координат
+    [SerializeField] private ScreenCoordinateTransform _screenCoordinateTransform;
 
     //rect transform панели палитры
     private RectTransform _colorPanelRT;
@@ -77,7 +79,7 @@ public class ColorsPanelManager : MonoBehaviour
     //сохраняем цвет пикселя под курсором в _chosenColor и назначаем этот цвет в картинку выбранного цвета
     public void ChooseColor()
     {
-        _chosenColor = _colorSelector.GetPixel((int)LineCreator.GetWorldCoordinate(Input.mousePosition).y, (int)LineCreator.GetWorldCoordinate(Input.mousePosition).x);
+        _chosenColor = _colorSelector.GetPixel((int)_screenCoordinateTransform.GetWorldCoordinate(Input.mousePosition).y, (int)_screenCoordinateTransform.GetWorldCoordinate(Input.mousePosition).x);
         _chosenColorImage.color = _chosenColor;
     }
 
